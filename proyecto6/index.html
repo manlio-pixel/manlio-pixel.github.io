@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            font-family: 'Nunito', sans-serif;
+            background: #ffffff;
+        }
+
+        .back {
+            position: relative;
+            width: 100%;
+            min-height: 100vh;
+            background: white;
+            animation: backdiv 3500ms infinite;
+            padding-top: 50px;
+            box-sizing: border-box;
+        }
+
+        @keyframes backdiv {
+            50% { background: #87eb7efd; }
+        }
+
+        .bday {
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto 50px auto;
+            padding: 20px;
+            background-color: #aded23;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+            font-size: 18px;
+            font-weight: 600;
+            color: #0e2804;
+            line-height: 1.8;
+            border-radius: 15px;
+        }
+
+        .bday p {
+            margin-bottom: 20px;
+        }
+
+        .elements {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 40px;
+        }
+
+        .heart {
+            position: relative;
+            background-color: yellow;
+            width: 150px;
+            height: 150px;
+            transform: rotate(-45deg);
+            animation: beat 1s infinite;
+        }
+
+        .heart:before, .heart:after {
+            content: "";
+            position: absolute;
+            width: 150px;
+            height: 150px;
+            background-color: yellow;
+            border-radius: 50%;
+        }
+
+        .heart:before {
+            top: -75px;
+            left: 0;
+        }
+
+        .heart:after {
+            top: 0;
+            left: 75px;
+        }
+
+        @keyframes beat {
+            0%, 100% { transform: scale(1) rotate(-45deg); }
+            50% { transform: scale(0.6) rotate(-45deg); }
+        }
+
+        button {
+            padding: 12px 25px;
+            background-color: rgb(143, 216, 64);
+            color: white;
+            border: none;
+            border-radius: 25px;
+            font-size: 18px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background-color: #98c846;
+        }
+
+        button a {
+            color: white;
+            text-decoration: none;
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@600&display=swap" rel="stylesheet">
+    <title>Flores Amarillas</title>
+</head>
+<body>
+    <div class="back">
+
+        <div class="bday">
+            <p>Mi niña, mi Eli 💕</p>
+            <p>Hoy 21 de septiembre 🌸, quiero enviarte estas palabras y por el dia que es, unas tus flores amarillas 🌼 aunque sea a la distancia, para recordarte lo especial que eres y cuánto te amo ❤️. Aunque no puedo estar a tu lado físicamente, quiero que sepas que mi corazón late siempre contigo 💓. En cada amanecer 🌅 y en cada noche 🌙, tu nombre se convierte en mi pensamiento más dulce ✨ y en la razón que me motiva a seguir.</p>
+            <p>Me encantaría poder darte las flores 🌼 y mirarte a los ojos 👀 para decirte cuánto te amo 💖, pero por ahora te regalo estas palabras que nacen de lo más profundo de mi ser 💌. Tú eres mi alegría 🌈, mi fuerza 💪 y mi ilusión ✨, y aunque la distancia nos separe 🌍, siento que nuestro amor rompe cualquier barrera 💫.</p>
+            <p>Eli, mi niña hermosa 🌹, quiero que recuerdes siempre lo especial que eres para mí 💞. No hay distancia capaz de apagar lo que siento; al contrario, cada día lejos de ti solo me confirma que eres la persona con la que quiero caminar todos mis días 🚶‍♂️💑.</p>
+            <p>Hoy te celebro 🎉, te pienso 🤍 y te amo más que nunca 💕. Te prometo que un día no habrá kilómetros entre nosotros 🚀, solo abrazos 🤗, besos 😘 y momentos compartidos 🌟. Hasta entonces, guárdame en tu corazón 💖, porque tú ya vives en el mío 💘.</p>
+            <p>Con todo mi amor 💞,<br>Bubu ✍️</p>
+        </div>
+
+        <div class="elements">
+            <div class="heart"></div>
+            <button><a href="index2.html">Haz click aquí ✨</a></button>
+        </div>
+
+    </div>
+</body>
+</html>
