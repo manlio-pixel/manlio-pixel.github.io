@@ -13,12 +13,12 @@ El objetivo principal es centralizar y presentar mis proyectos web en un solo si
 ## 🚀 Acceso a la aplicación
 
 - Portafolio principal:  
-  👉 `https://username.github.io/`
+  👉 `https://manlio-pixel.github.io/`
 
 - Proyectos individuales:  
-  - Proyecto 1 → `https://username.github.io/proyecto1/`  
-  - Proyecto 2 → `https://username.github.io/proyecto2/`  
-  - Proyecto 3 → `https://username.github.io/proyecto3/`  
+  - Proyecto 1 → `https://manlio-pixel.github.io/proyecto1/`  
+  - Proyecto 2 → `https://manlio-pixel.github.io/proyecto2/`  
+  - Proyecto 3 → `https://manlio-pixel.github.io/proyecto3/`  
 
 ---
 
