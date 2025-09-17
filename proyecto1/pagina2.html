@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Juego de Corazones Mejorado ❤️</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    body {
+      position: relative;
+      overflow: hidden;
+    }
+
+    h1, p {
+      z-index: 10;
+      position: relative;
+    }
+
+    /* Corazón grande animado */
+    .corazon-grande {
+      width: 150px;
+      height: 150px;
+      margin: 20px auto;
+      display: block;
+      animation: latido 1s infinite;
+      position: relative;
+      z-index: 10;
+    }
+
+    @keyframes latido {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.2); }
+    }
+
+    /* Contadores */
+    #puntos, #tiempo {
+      position: fixed;
+      top: 10px;
+      font-size: 1.5rem;
+      color: white;
+      z-index: 20;
+      text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+    }
+    #puntos { right: 20px; }
+    #tiempo { left: 20px; }
+
+    /* Corazones del juego */
+    .corazon-juego {
+      position: absolute;
+      font-size: 30px;
+      cursor: pointer;
+      user-select: none;
+      animation: caer 6s linear infinite;
+    }
+
+    @keyframes caer {
+      0% { transform: translateY(-50px) scale(1); }
+      100% { transform: translateY(100vh) scale(1.2); }
+    }
+
+    /* Mensajes románticos */
+    .mensaje-romantico {
+      position: fixed;
+      font-size: 1.2rem;
+      font-weight: bold;
+      color: pink;
+      text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+      z-index: 30;
+      pointer-events: none;
+      animation: subir 1.5s forwards;
+    }
+
+    @keyframes subir {
+      0% { opacity: 1; transform: translateY(0); }
+      100% { opacity: 0; transform: translateY(-50px); }
+    }
+  </style>
+</head>
+<body>
+  <h1>💌 Sorpresa 💌</h1>
+  <p>¡Atrapa los corazones y diviértete! 😘</p>
+  <p>Te amo mucho ❤️</p>
+
+  <!-- Corazón grande animado -->
+  <svg class="corazon-grande" viewBox="0 0 24 24" fill="red" xmlns="http://www.w3.org/2000/svg">
+    <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41 0.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+  </svg>
+
+  <!-- Contadores -->
+  <div id="puntos">Puntos: 0</div>
+  <div id="tiempo">Tiempo: 30s</div>
+
+  <script src="script.js"></script>
+  <script>
+    let puntos = 0;
+    let tiempo = 30; // segundos
+    const mensajes = ["Te amo ❤️", "Eres increíble 😘", "Mi persona favorita 💖", "Eres única 💫", "Siempre en mi corazón 💌"];
+    const colores = ["red", "pink", "purple", "orange", "yellow"];
+
+    function crearCorazonJuego() {
+      const corazon = document.createElement("div");
+      corazon.classList.add("corazon-juego");
+      corazon.innerHTML = "❤️";
+      corazon.style.left = Math.random() * (window.innerWidth - 30) + "px";
+      corazon.style.top = "-50px";
+      corazon.style.color = colores[Math.floor(Math.random() * colores.length)];
+
+      corazon.addEventListener("click", (e) => {
+  puntos += 1;
+  document.getElementById("puntos").innerText = "Puntos: " + puntos;
+
+  // Mostrar mensaje romántico en la posición del click
+  const mensaje = document.createElement("div");
+  mensaje.classList.add("mensaje-romantico");
+  mensaje.innerText = mensajes[Math.floor(Math.random() * mensajes.length)];
+
+  // Obtener posición del click
+  mensaje.style.left = (e.clientX - 30) + "px"; 
+  mensaje.style.top = (e.clientY - 20) + "px"; 
+  document.body.appendChild(mensaje);
+
+  setTimeout(() => mensaje.remove(), 1500);
+  corazon.remove();
+});
+
+
+      document.body.appendChild(corazon);
+
+      // Remover corazón si llega al final
+      setTimeout(() => { if (corazon.parentElement) corazon.remove(); }, 6000);
+    }
+
+    // Crear corazones cada 0.8 segundos
+    const corazonInterval = setInterval(crearCorazonJuego, 800);
+
+    // Contador de tiempo
+    const tiempoInterval = setInterval(() => {
+      tiempo -= 1;
+      document.getElementById("tiempo").innerText = "Tiempo: " + tiempo + "s";
+      if (tiempo <= 0) {
+        clearInterval(tiempoInterval);
+        clearInterval(corazonInterval);
+        alert("¡Se acabó el tiempo! Tu puntaje: " + puntos + " ❤️");
+      }
+    }, 1000);
+  </script>
+</body>
+</html>
