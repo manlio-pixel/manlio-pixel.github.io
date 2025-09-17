@@ -1,0 +1,271 @@
+/* RESET */
+* { padding:0; margin:0; box-sizing:border-box; }
+
+/* VARIABLES DE COLOR */
+:root {
+    --color-bg: linear-gradient(to top, #00d4ff, #000); 
+    --line-color: linear-gradient(to left top, #82ff86 20%, #144425, #104e1c);
+    --flower-center: radial-gradient(circle, #000, #ff5e00);
+    --leaf-color: radial-gradient(circle, #82ff86, #104e1c);
+    --petal-color: radial-gradient(circle, #ff5e00, #ffbb00);
+}
+
+/* BODY */
+body {
+    background-image: var(--color-bg);
+    min-height: 100vh;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    position: relative;
+    overflow-x: hidden;
+}
+
+/* TEXTO */
+#text {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #ff6f61;
+    font-family: 'Pacifico', cursive;
+    font-size: 28px;
+    font-weight: 600;
+    text-align: center;
+}
+
+/* RAMO */
+.ramo {
+    position: relative;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    width: 100%;
+}
+
+/* FLOWER WRAPPER BASE */
+.sunflower {
+    position: absolute;
+    bottom: 0;
+    transform-origin: bottom center;
+}
+
+/* INCLINACIONES Y SEPARACIÓN */
+.sunflower-1 { left: 42%; transform: rotate(-25deg); }
+.sunflower-2 { left: 46%; transform: rotate(-10deg); }
+.sunflower-3 { left: 50%; transform: rotate(0deg); }
+.sunflower-4 { left: 54%; transform: rotate(10deg); }
+.sunflower-5 { left: 58%; transform: rotate(20deg); }
+
+/* MOVIMIENTO DE VIENTO */
+.flower_wrapper {
+    position: relative;
+    animation: sway 4s ease-in-out infinite;
+}
+@keyframes sway {
+    0% { transform: translateX(0) rotate(0deg); }
+    25% { transform: translateX(1.5vmin) rotate(3deg); }
+    50% { transform: translateX(0) rotate(0deg); }
+    75% { transform: translateX(-1.5vmin) rotate(-3deg); }
+    100% { transform: translateX(0) rotate(0deg); }
+}
+
+/* STEM */
+.flower_stem{
+    width: 2.5vmin;
+    height: 70vmin; /* Tallos más largos */
+    background-image: var(--line-color);
+    border-radius: 4vmin;
+    margin: 0 auto;
+}
+
+/* CENTER */
+.flower_center{
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 20vmin; /* Centro más grande */
+    height: 20vmin;
+    border-radius: 50%;
+    background: var(--flower-center);
+    z-index: 5;
+}
+
+/* PETALS */
+.flower_petal{
+    position: absolute;
+    left: 50%;
+    bottom: 60vmin; /* Ajustado para alinearse con el centro de la flor */
+    transform: translateX(-50%);
+    width: 6vmin; /* Pétalos más grandes */
+    height: 20vmin;
+    background: var(--petal-color);
+    clip-path: ellipse(50% 50% at 50% 50%);
+    transform-origin: center bottom; /* pivote desde el centro inferior */
+    z-index: 4; /* detrás del centro */
+}
+
+/* ROTACIÓN DE PÉTALOS */
+.flower_petal-1{ transform: translateX(-50%) rotate(0deg);}
+.flower_petal-2{ transform: translateX(-50%) rotate(30deg);}
+.flower_petal-3{ transform: translateX(-50%) rotate(60deg);}
+.flower_petal-4{ transform: translateX(-50%) rotate(90deg);}
+.flower_petal-5{ transform: translateX(-50%) rotate(120deg);}
+.flower_petal-6{ transform: translateX(-50%) rotate(150deg);}
+.flower_petal-7{ transform: translateX(-50%) rotate(-30deg);}
+.flower_petal-8{ transform: translateX(-50%) rotate(-60deg);}
+.flower_petal-9{ transform: translateX(-50%) rotate(-90deg);}
+.flower_petal-10{ transform: translateX(-50%) rotate(-120deg);}
+.flower_petal-11{ transform: translateX(-50%) rotate(-150deg);}
+.flower_petal-12{ transform: translateX(-50%) rotate(-180deg); }
+
+/* HOJAS */
+.flower_leaf{
+    position: absolute;
+    width: 6vmin;
+    height: 14vmin;
+    background: var(--leaf-color);
+    border-radius: 10vmin 3vmin 10vmin 3vmin;
+    transform-origin: center bottom;
+}
+.flower_leaf-1{ bottom: 12vmin; left: 52%; transform: rotate(70deg);}
+.flower_leaf-2{ bottom: 18vmin; left: 52%; transform: rotate(-70deg); }
+
+/* LUCES FLOR - regla general */
+.flower_light{
+    position: absolute;
+    width: 1vmin;
+    height: 1vmin;
+    background: rgb(255, 251, 0);
+    border-radius: 50%;
+    filter: blur(0.2vmin);
+    animation: light-ans 4s linear infinite;
+}
+
+/* Posiciones y delays individuales para 8 luces */
+.flower_light-1{ left: -2vmin; animation-delay: 0s;}
+.flower_light-2{ left: 2vmin; animation-delay: 0.5s;}
+.flower_light-3{ left: -4vmin; animation-delay: 1s;}
+.flower_light-4{ left: 4vmin; animation-delay: 1.5s;}
+.flower_light-5{ left: -1vmin; animation-delay: 2s;}
+.flower_light-6{ left: 3vmin; animation-delay: 2.5s;}
+.flower_light-7{ left: -3vmin; animation-delay: 3s;}
+.flower_light-8{ left: 1vmin; animation-delay: 3.5s;}
+
+/* ANIMACIÓN DE LAS LUCES */
+@keyframes light-ans {
+    0% { opacity:0; transform: translateY(0vmin);}
+    25%{ opacity:1; transform: translateY(-5vmin) translateX(-1vmin);}
+    50%{ opacity:1; transform: translateY(-15vmin) translateX(1vmin);}
+    75%{ transform: translateY(-20vmin) translateX(-1vmin);}
+    100%{ opacity:0; transform: translateY(-30vmin);}
+}
+/* ABEJA FUNCIONAL */
+.bee {
+    position: absolute;
+    width: 4vmin;
+    height: 3vmin;
+    top: 20vmin;
+    left: -5vmin;
+    border-radius: 50% / 50%;
+    background: yellow; /* cuerpo principal */
+    border: 2px solid black;
+    z-index: 10;
+    animation: flyBee 10s linear infinite;
+}
+
+/* RAYAS NEGRAS */
+.bee::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: repeating-linear-gradient(
+        to bottom,
+        black 0%,
+        black 20%,
+        transparent 20%,
+        transparent 40%
+    );
+    border-radius: 50% / 50%;
+}
+
+/* ALAS TRANSPARENTES */
+.bee::before {
+    content: "";
+    position: absolute;
+    width: 2vmin;
+    height: 1.5vmin;
+    background: rgba(255, 255, 255, 0.7);
+    border-radius: 50%;
+    top: -0.5vmin;
+    left: 0.5vmin;
+    animation: wingFlap 0.3s infinite alternate;
+}
+
+/* ANIMACIONES */
+@keyframes wingFlap {
+    0% { transform: rotate(20deg); }
+    100% { transform: rotate(0deg); }
+}
+
+@keyframes flyBee {
+    0% { transform: translate(-5vmin, 0vmin) rotate(0deg);}
+    25% { transform: translate(20vmin, -10vmin) rotate(15deg);}
+    50% { transform: translate(40vmin, -5vmin) rotate(-15deg);}
+    75% { transform: translate(60vmin, -12vmin) rotate(10deg);}
+    100% { transform: translate(80vmin, 0vmin) rotate(0deg);}
+}
+/* POLVITO MÁGICO */
+.dust {
+    position: absolute;
+    width: 1vmin;
+    height: 1vmin;
+    background: yellow;
+    border-radius: 50%;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    animation: dustTrail 2s linear infinite;
+}
+
+/* ANIMACIÓN DEL POLVITO */
+@keyframes dustTrail {
+    0% { transform: translate(0vmin, 0vmin); opacity: 1; }
+    25% { transform: translate(-0.5vmin, -1vmin); opacity: 0.8; }
+    50% { transform: translate(-1vmin, -2vmin); opacity: 0.6; }
+    75% { transform: translate(-1.5vmin, -3vmin); opacity: 0.3; }
+    100% { transform: translate(-2vmin, -4vmin); opacity: 0; }
+}
+/* CONTENEDOR DEL POLVITO */
+#dust-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none; /* que no interfiera con clicks */
+    overflow: visible;
+}
+
+/* CADA PUNTITO DEL POLVO */
+.dust {
+    position: absolute;
+    width: 1vmin;
+    height: 1vmin;
+    background: yellow;
+    border-radius: 50%;
+    opacity: 0.8;
+    animation: dust-fade 1.5s forwards;
+}
+
+/* ANIMACIÓN DE DESVANECIMIENTO Y MOVIMIENTO */
+@keyframes dust-fade {
+    0% { opacity: 0.8; transform: translate(0,0) scale(1); }
+    50% { opacity: 0.6; transform: translate(-0.5vmin, -1vmin) scale(0.8); }
+    100% { opacity: 0; transform: translate(-1vmin, -2vmin) scale(0.5); }
+}
