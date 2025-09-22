@@ -6,50 +6,60 @@
   <title>✨ “Mis regalitos para ti” ✨</title>
   <style>
     body {
+      font-family: Arial, sans-serif;
+      background: #f4f4f9;
       margin: 0;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: linear-gradient(135deg, #fff3cd, #ffe5ec);
-      color: #333;
+      padding: 0;
       text-align: center;
     }
     header {
-      padding: 2rem;
-      background: #ff6f91;
-      color: white;
+      background: #222;
+      color: #fff;
+      padding: 20px 0;
     }
-    header h1 { margin: 0; font-size: 2.5rem; }
-    header p { margin-top: 0.5rem; font-size: 1.2rem; }
-    main {
+    h1 {
+      margin: 0;
+    }
+    .container {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 1.5rem;
-      padding: 2rem;
+      gap: 20px;
+      padding: 20px;
+      max-width: 1200px;
+      margin: auto;
     }
     .card {
-      background: white;
-      border-radius: 15px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-      padding: 1.5rem;
-      text-align: center;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      padding: 20px;
+      transition: transform 0.2s;
     }
     .card:hover {
       transform: translateY(-5px);
-      box-shadow: 0 8px 20px rgba(0,0,0,0.3);
     }
-    .card h2 { color: #ff6f91; }
+    .card h2 {
+      margin: 10px 0;
+      font-size: 20px;
+      color: #333;
+    }
+    .card p {
+      color: #555;
+    }
     .card a {
       display: inline-block;
-      margin-top: 1rem;
-      padding: 0.5rem 1rem;
-      background: #ff6f91;
-      color: white;
+      margin-top: 10px;
       text-decoration: none;
-      border-radius: 8px;
-      font-weight: bold;
-      transition: background 0.3s ease;
+      background: #007acc;
+      color: #fff;
+      padding: 10px 15px;
+      border-radius: 6px;
+      transition: background 0.2s;
     }
-    .card a:hover { background: #ff3b6b; }
+    .card a:hover {
+      background: #005f99;
+    }
+  </style>
   </style>
 </head>
 <body>
@@ -118,6 +128,7 @@
   </div>
 </body>
 </html>
+
 
 
 
