@@ -5,73 +5,135 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>✨ “Mis regalitos para ti” ✨</title>
   <style>
-    body {
-      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-      background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
-      margin: 0;
-      padding: 0;
-      text-align: center;
-      color: #333;
-    }
-    header {
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-      color: #fff;
-      padding: 40px 20px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-    }
-    h1 {
-      margin: 0;
-      font-size: 2.5rem;
-    }
-    p {
-      margin-top: 10px;
-      font-size: 1.1rem;
-    }
-    .container {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 25px;
-      padding: 30px;
-      max-width: 1200px;
-      margin: auto;
-    }
-    .card {
-      background: linear-gradient(135deg, #f6d365 0%, #fda085 100%);
-      border-radius: 15px;
-      box-shadow: 0 6px 12px rgba(0,0,0,0.15);
-      padding: 25px;
-      transition: transform 0.25s ease, box-shadow 0.25s ease;
-    }
-    .card:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 10px 18px rgba(0,0,0,0.25);
-    }
-    .card h2 {
-      margin: 10px 0;
-      font-size: 1.6rem;
-      color: #222;
-    }
-    .card p {
-      color: #444;
-      font-size: 1rem;
-    }
-    .card a {
-      display: inline-block;
-      margin-top: 15px;
-      text-decoration: none;
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-      color: #fff;
-      padding: 12px 20px;
-      border-radius: 8px;
-      font-weight: bold;
-      transition: background 0.3s ease;
-    }
-    .card a:hover {
-      background: linear-gradient(135deg, #43cea2 0%, #185a9d 100%);
-    }
+ body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    text-align: center;
+    overflow-x: hidden;
+  }
+
+  /* Animaciones de fondo */
+  .floating {
+    position: fixed;
+    top: -50px;
+    font-size: 2rem;
+    opacity: 0.8;
+    animation-name: floatUp;
+    animation-timing-function: linear;
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  @keyframes floatUp {
+    0% { transform: translateY(0) rotate(0deg); }
+    100% { transform: translateY(-110vh) rotate(360deg); }
+  }
+
+  /* Mantenimiento */
+  #maintenance {
+    display: none;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background: linear-gradient(135deg, #ffe5ec, #fff3cd);
+  }
+
+  #maintenance .box {
+    background: white;
+    padding: 2rem;
+    border-radius: 20px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    max-width: 400px;
+    z-index: 2;
+    position: relative;
+  }
+
+  #maintenance h1 {
+    color: #ff6f91;
+  }
+
+  #maintenance .heart {
+    font-size: 2rem;
+    animation: beat 1s infinite;
+  }
+
+  @keyframes beat {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+  }
+
+  /* Contenido principal */
+  #mainContent { display: none; }
+
+  header {
+    padding: 2rem;
+    background: #ff6f91;
+    color: white;
+  }
+
+  header h1 {
+    margin: 0;
+    font-size: 2.5rem;
+  }
+
+  header p {
+    margin-top: 0.5rem;
+    font-size: 1.2rem;
+  }
+
+  main {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    padding: 2rem;
+  }
+
+  .card {
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    padding: 1.5rem;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+  }
+
+  .card h2 { color: #ff6f91; }
+
+  .card a {
+    display: inline-block;
+    margin-top: 1rem;
+    padding: 0.5rem 1rem;
+    background: #ff6f91;
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: bold;
+    transition: background 0.3s ease;
+  }
+
+  .card a:hover { background: #ff3b6b; }
   </style>
 </head>
 <body>
+  <!-- Animaciones flotantes -->
+<div id="floatingContainer"></div>
+
+<!-- Contenido mantenimiento -->
+<div id="maintenance">
+  <div class="box">
+    <h1>💖 En mantenimiento 💖</h1>
+    <p>Estoy preparando algo especial para ti,<br> vuelve pronto para descubrir tus detallitos ✨</p>
+    <div class="heart">❤️</div>
+  </div>
+</div>
+
   <header>
     <h1>✨ “Mis regalitos para ti” ✨</h1>
     <p>"Esto es para ti, mi amor, con todo mi corazón ❤️"</p>
@@ -114,10 +176,34 @@
       <p>"Cuando las flores amarillas se encuentran con las palabras, nace un mensaje que toca el alma. 💛✉️"</p>
       <a href="proyecto6/">Ver Proyecto 🚀</a>
     </div>
-  
+  <script>
+  // 🔹 Cambia a true para activar mantenimiento, false para mostrar proyectos
+  const isMaintenance = true;
+
+  if (isMaintenance) {
+    document.getElementById("maintenance").style.display = "flex";
+
+    // Animación de corazoncitos y flores
+    const floatingContainer = document.getElementById("floatingContainer");
+    const symbols = ['❤️','💛','🌼','💌'];
+    for (let i=0;i<20;i++){
+      const span = document.createElement('span');
+      span.className = 'floating';
+      span.style.left = Math.random()*100 + 'vw';
+      span.style.fontSize = 1 + Math.random()*2 + 'rem';
+      span.style.animationDuration = (5 + Math.random()*5)+'s';
+      span.textContent = symbols[Math.floor(Math.random()*symbols.length)];
+      floatingContainer.appendChild(span);
+    }
+
+  } else {
+    document.getElementById("mainContent").style.display = "block";
+  }
+</script>
   </div>
 </body>
 </html>
+
 
 
 
