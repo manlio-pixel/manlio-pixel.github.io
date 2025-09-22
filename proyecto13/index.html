@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pedida de Mano 💍</title>
+<style>
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background: linear-gradient(135deg, #fbc2eb, #a6c1ee);
+    overflow: hidden;
+    color: #fff;
+  }
+
+  h1 {
+    font-size: 3em;
+    margin-bottom: 20px;
+    color: #ffd700;
+    text-shadow: 2px 2px 5px rgba(0,0,0,0.3);
+  }
+
+  p {
+    font-size: 1.5em;
+    max-width: 600px;
+    padding: 0 15px;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+  }
+
+  .ring {
+    font-size: 6rem;
+    margin: 20px 0;
+    animation: sparkle 2s ease-in-out infinite alternate;
+  }
+
+  @keyframes sparkle {
+    0% { transform: scale(1); }
+    100% { transform: scale(1.2); }
+  }
+
+  .particle {
+    position: absolute;
+    width: 5px;
+    height: 5px;
+    background: gold;
+    border-radius: 50%;
+    pointer-events: none;
+    animation: float 3s linear forwards;
+  }
+
+  @keyframes float {
+    0% { transform: translateY(0) scale(1); opacity: 1; }
+    100% { transform: translateY(-500px) scale(0.5); opacity: 0; }
+  }
+
+  .buttons {
+    margin-top: 20px;
+  }
+
+  button {
+    font-size: 1.5em;
+    padding: 10px 30px;
+    margin: 10px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .yes {
+    background-color: #28a745;
+    color: white;
+  }
+
+  .no {
+    background-color: #dc3545;
+    color: white;
+    position: relative;
+  }
+</style>
+</head>
+<body>
+
+<div class="ring">💍</div>
+<h1>¿Quieres casarte conmigo? 💖</h1>
+<p>
+Desde que llegaste a mi vida, todo se volvió más brillante y hermoso.  
+Quiero pasar cada día contigo, construyendo nuestro futuro juntos. ✨
+</p>
+
+<div class="buttons">
+  <button class="yes" onclick="window.location.href='confirmacion.html'">Sí 💖</button>
+  <button class="no">No 😢</button>
+</div>
+
+<script>
+  // Partículas doradas
+  function createParticle() {
+    const particle = document.createElement("div");
+    particle.className = "particle";
+    particle.style.left = Math.random() * window.innerWidth + "px";
+    particle.style.top = window.innerHeight + "px";
+    particle.style.width = particle.style.height = (3 + Math.random()*5) + "px";
+    particle.style.animationDuration = (2 + Math.random()*2) + "s";
+    document.body.appendChild(particle);
+    setTimeout(() => particle.remove(), 3000);
+  }
+  setInterval(createParticle, 150);
+
+  // Botón "No" evasivo
+  const noBtn = document.querySelector('.no');
+
+  function moveButton() {
+    const x = Math.random() * (window.innerWidth - noBtn.offsetWidth);
+    const y = Math.random() * (window.innerHeight - noBtn.offsetHeight);
+    noBtn.style.position = 'absolute';
+    noBtn.style.left = x + 'px';
+    noBtn.style.top = y + 'px';
+  }
+
+  // Para PC: mover al acercarse el cursor
+  noBtn.addEventListener('mouseenter', moveButton);
+
+  // Para móvil: mover al tocar
+  noBtn.addEventListener('touchstart', moveButton);
+</script>
+
+</body>
+</html>

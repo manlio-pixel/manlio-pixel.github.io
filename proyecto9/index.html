@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Día del Beso 💋</title>
+<style>
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background: linear-gradient(135deg, #ffdde1, #ee9ca7);
+    overflow: hidden;
+    color: #fff;
+  }
+
+  .bigKiss {
+    font-size: 10rem;
+    opacity: 1;
+    animation: fadeOut 2s forwards;
+  }
+
+  @keyframes fadeOut {
+    0% { opacity: 1; transform: scale(1); }
+    100% { opacity: 0; transform: scale(1.5); }
+  }
+
+  .message {
+    opacity: 0;
+    font-size: 2em;
+    margin: 0 20px;
+    transition: opacity 2s ease-in;
+  }
+
+  .showMessage {
+    opacity: 1;
+  }
+
+  /* Partículas de brillo detrás del mensaje */
+  .particle {
+    position: absolute;
+    width: 5px;
+    height: 5px;
+    background: rgba(255,255,255,0.8);
+    border-radius: 50%;
+    animation: float 3s linear forwards;
+  }
+
+  @keyframes float {
+    0% { transform: translateY(0) scale(1); opacity: 1; }
+    100% { transform: translateY(-500px) scale(0.5); opacity: 0; }
+  }
+</style>
+</head>
+<body>
+
+  <div class="bigKiss">💋</div>
+  <div class="message">¡Feliz Día del Beso! 😘<br>Un beso tuyo ilumina mi corazón cada día.</div>
+
+  <script>
+    const message = document.querySelector(".message");
+
+    // Mostrar mensaje después de que el beso se desvanezca
+    setTimeout(() => {
+      message.classList.add("showMessage");
+
+      // Crear partículas brillantes detrás del mensaje
+      const interval = setInterval(() => {
+        const particle = document.createElement("div");
+        particle.className = "particle";
+        particle.style.left = Math.random() * window.innerWidth + "px";
+        particle.style.top = window.innerHeight + "px";
+        particle.style.width = particle.style.height = (3 + Math.random()*5) + "px";
+        particle.style.animationDuration = (2 + Math.random()*2) + "s";
+        document.body.appendChild(particle);
+        setTimeout(() => particle.remove(), 3000);
+      }, 150);
+
+      // Detener la creación de partículas después de 8 segundos
+      setTimeout(() => clearInterval(interval), 8000);
+    }, 2000); // 2s coinciden con la animación de fadeOut del beso
+  </script>
+
+</body>
+</html>

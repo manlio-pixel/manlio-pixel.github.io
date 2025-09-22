@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Día del Abrazo 🤗</title>
+<style>
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background: linear-gradient(135deg, #ffecd2, #fcb69f);
+    overflow: hidden;
+    cursor: pointer;
+  }
+
+  h1 {
+    font-size: 3em;
+    color: #ff6f91;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+    margin-bottom: 10px;
+  }
+
+  p {
+    font-size: 1.3em;
+    color: #fff;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 0 15px;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+  }
+
+  .emoji, .particle {
+    position: absolute;
+    user-select: none;
+    pointer-events: none;
+    animation-fill-mode: forwards;
+  }
+
+  @keyframes floatUp {
+    0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+    100% { transform: translateY(-700px) rotate(360deg); opacity: 0; }
+  }
+
+  @keyframes particleFloat {
+    0% { transform: translateY(0) scale(1); opacity: 1; }
+    100% { transform: translateY(-500px) scale(0.5); opacity: 0; }
+  }
+</style>
+</head>
+<body>
+
+  <h1>🤗 Feliz Día del Abrazo 🤗</h1>
+  <p>
+    Toca la pantalla y deja que los abrazos virtuales llenen tu día,  
+    junto con un toque de magia que haga sonreír tu corazón. 💕
+  </p>
+
+  <script>
+    const emojis = ["🤗","🤝","🫂","💞"];
+
+    function createEmoji(x, y) {
+      const emoji = document.createElement("div");
+      emoji.className = "emoji";
+      emoji.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+      emoji.style.left = x + "px";
+      emoji.style.top = y + "px";
+      emoji.style.fontSize = (20 + Math.random() * 30) + "px";
+      emoji.style.animation = `floatUp ${3 + Math.random() * 3}s linear`;
+      document.body.appendChild(emoji);
+      setTimeout(() => emoji.remove(), 4000);
+
+      // Crear partículas brillantes
+      for(let i=0;i<5;i++){
+        const particle = document.createElement("div");
+        particle.className = "particle";
+        particle.style.left = x + "px";
+        particle.style.top = y + "px";
+        particle.style.width = particle.style.height = (5 + Math.random()*5) + "px";
+        particle.style.background = "rgba(255,255,255," + Math.random() + ")";
+        particle.style.borderRadius = "50%";
+        particle.style.animation = `particleFloat ${2 + Math.random()}s linear`;
+        particle.style.transform = `translateX(${(Math.random()-0.5)*100}px)`;
+        document.body.appendChild(particle);
+        setTimeout(() => particle.remove(), 2000);
+      }
+    }
+
+    document.addEventListener("click", function(e) {
+      createEmoji(e.clientX, e.clientY);
+    });
+
+    document.addEventListener("touchstart", function(e) {
+      const touch = e.touches[0];
+      createEmoji(touch.clientX, touch.clientY);
+    });
+  </script>
+
+</body>
+</html>
