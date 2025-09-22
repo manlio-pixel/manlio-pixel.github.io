@@ -176,15 +176,18 @@
       <p>"Cuando las flores amarillas se encuentran con las palabras, nace un mensaje que toca el alma. 💛✉️"</p>
       <a href="proyecto6/">Ver Proyecto 🚀</a>
     </div>
-  <script>
-  // 🔹 Cambia a true para activar mantenimiento, false para mostrar proyectos
-  const isMaintenance = true;
+ <script>
+  const isMaintenance = true; // Cambia a false para mostrar proyectos
+
+  const maintenanceDiv = document.getElementById("maintenance");
+  const mainDiv = document.getElementById("mainContent");
+  const floatingContainer = document.getElementById("floatingContainer");
 
   if (isMaintenance) {
-    document.getElementById("maintenance").style.display = "flex";
+    maintenanceDiv.style.display = "flex";      // Muestra mantenimiento
+    mainDiv.style.display = "none";             // Oculta proyectos
 
     // Animación de corazoncitos y flores
-    const floatingContainer = document.getElementById("floatingContainer");
     const symbols = ['❤️','💛','🌼','💌'];
     for (let i=0;i<20;i++){
       const span = document.createElement('span');
@@ -197,12 +200,14 @@
     }
 
   } else {
-    document.getElementById("mainContent").style.display = "block";
+    maintenanceDiv.style.display = "none";      // Oculta mantenimiento
+    mainDiv.style.display = "block";            // Muestra proyectos
   }
 </script>
   </div>
 </body>
 </html>
+
 
 
 
