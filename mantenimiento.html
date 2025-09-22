@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mi página</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(135deg, #ffe5ec, #fff3cd);
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: #333;
+      text-align: center;
+    }
+    .container {
+      background: white;
+      padding: 2rem;
+      border-radius: 20px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+      max-width: 400px;
+    }
+    h1 {
+      color: #ff6f91;
+    }
+    p {
+      margin: 1rem 0;
+      font-size: 1.1rem;
+    }
+    .heart {
+      font-size: 2rem;
+      animation: beat 1s infinite;
+    }
+    @keyframes beat {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.2); }
+    }
+    a.button {
+      display: inline-block;
+      margin-top: 1.5rem;
+      padding: 0.7rem 1.5rem;
+      background: #ff6f91;
+      color: white;
+      text-decoration: none;
+      border-radius: 10px;
+      font-weight: bold;
+      transition: background 0.3s ease;
+    }
+    a.button:hover {
+      background: #ff3b6b;
+    }
+  </style>
+</head>
+<body>
+  <div id="maintenance" class="container" style="display: none;">
+    <h1>💖 En mantenimiento 💖</h1>
+    <p>Estoy preparando algo especial para ti,<br> vuelve mas tarde porfavor!!😊✨</p>
+    <div class="heart">❤️</div>
+    <a href="index.html" class="button">Entrar a mis detallitos</a>
+  </div>
+
+  <script>
+    // 🔹 Cambia esto a true/false para activar o desactivar el modo mantenimiento
+    const isMaintenance = false;
+
+    if (isMaintenance) {
+      // Muestra el mensaje de mantenimiento
+      document.getElementById("maintenance").style.display = "block";
+    } else {
+      // Redirige directo a la página principal
+      window.location.href = "home.html";
+    }
+  </script>
+</body>
+</html>
