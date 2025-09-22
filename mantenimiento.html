@@ -1,78 +1,47 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>En mantenimiento!! 🥹</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Redirección — comprobando estado</title>
   <style>
-    body {
-      margin: 0;
-      height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      background: linear-gradient(135deg, #ffe5ec, #fff3cd);
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      color: #333;
-      text-align: center;
-    }
-    .container {
-      background: white;
-      padding: 2rem;
-      border-radius: 20px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-      max-width: 400px;
-    }
-    h1 {
-      color: #ff6f91;
-    }
-    p {
-      margin: 1rem 0;
-      font-size: 1.1rem;
-    }
-    .heart {
-      font-size: 2rem;
-      animation: beat 1s infinite;
-    }
-    @keyframes beat {
-      0%, 100% { transform: scale(1); }
-      50% { transform: scale(1.2); }
-    }
-    a.button {
-      display: inline-block;
-      margin-top: 1.5rem;
-      padding: 0.7rem 1.5rem;
-      background: #ff6f91;
-      color: white;
-      text-decoration: none;
-      border-radius: 10px;
-      font-weight: bold;
-      transition: background 0.3s ease;
-    }
-    a.button:hover {
-      background: #ff3b6b;
-    }
+    body{font-family:Segoe UI,system-ui,sans-serif;display:flex;align-items:center;justify-content:center;height:100vh;margin:0;background:linear-gradient(135deg,#fff3cd,#ffe5ec);color:#333;text-align:center}
+    .box{background:white;padding:1.5rem;border-radius:12px;box-shadow:0 6px 18px rgba(0,0,0,0.12);max-width:420px}
+    a{color:#ff6f91;font-weight:700;text-decoration:none}
   </style>
 </head>
 <body>
-  <div id="maintenance" class="container" style="display: none;">
-    <h1>💖 En mantenimiento 💖</h1>
-    <p>Estoy preparando algo especial para ti,<br> vuelve mas tarde porfavor!!😊✨</p>
-    <div class="heart">❤️</div>
-    <a href="index.html" class="button">Entrar a mis detallitos</a>
+  <div class="box">
+    <h2>🔄 Comprobando estado del sitio…</h2>
+    <p id="msg">Un momento por favor...</p>
+    <p style="font-size:0.9rem;color:#666">Si no pasa nada, revisa estos enlaces:</p>
+    <p><a href="home.html">Página principal</a> · <a href="mantenimiento.html">Página de mantenimiento</a></p>
   </div>
 
   <script>
-    // 🔹 Cambia esto a true/false para activar o desactivar el modo mantenimiento
-    const isMaintenance = true;
-
-    if (isMaintenance) {
-      // Muestra el mensaje de mantenimiento
-      document.getElementById("maintenance").style.display = "block";
-    } else {
-      // Redirige directo a la página principal
-      window.location.href = "index.html";
-    }
+    (async function(){
+      const msg = document.getElementById('msg');
+      try {
+        const res = await fetch('maintenance.json?nocache=' + Date.now());
+        if (!res.ok) {
+          msg.textContent = "⚠️ No se encontró 'maintenance.json'. Se abrirá la página principal.";
+          window.location.href = "home.html";
+          return;
+        }
+        const cfg = await res.json();
+        if (cfg.active === true) {
+          msg.textContent = "💖 Sitio en mantenimiento. Redirigiendo...";
+          setTimeout(()=>window.location.href = "mantenimiento.html", 1500);
+        } else {
+          msg.textContent = "✨ Sitio activo. Redirigiendo...";
+          setTimeout(()=>window.location.href = "home.html", 1500);
+        }
+      } catch (err) {
+        console.error(err);
+        msg.textContent = "❌ Error leyendo 'maintenance.json'. Abriendo página principal.";
+        setTimeout(()=>window.location.href = "home.html", 2000);
+      }
+    })();
   </script>
 </body>
 </html>
