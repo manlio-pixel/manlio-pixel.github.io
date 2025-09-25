@@ -44,12 +44,19 @@ body {
     box-shadow: 0.5rem 1rem 3rem hsl(0, 0, 0,0.3);
 
 }
-#si {
+.btn a:first-child {
   background-color: green;
   color: white;
+  padding: 10px 20px;
+  text-decoration: none;
+  border-radius: 8px;
 }
 
-#no {
+.btn a:last-child {
   background-color: red;
   color: white;
+  padding: 10px 20px;
+  text-decoration: none;
+  border-radius: 8px;
 }
+
