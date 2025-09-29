@@ -4,42 +4,56 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Feliz Cumpleaños 🎉</title>
+
+<!-- Tipografías románticas -->
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
+
 <style>
   body {
     margin: 0;
     padding: 20px;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Quicksand', sans-serif;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
-    background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+    background: linear-gradient(135deg, #ff9a9e, #fad0c4, #fbc2eb, #a6c1ee);
+    background-size: 400% 400%;
+    animation: gradientMove 12s ease infinite;
     overflow-x: hidden;
     color: #fff;
     box-sizing: border-box;
   }
 
+  @keyframes gradientMove {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+
   h1 {
-    font-size: 2.5em;
+    font-size: 2.8em;
     margin: 10px 0 20px;
     color: #fffacd;
-    text-shadow: 2px 2px 5px rgba(0,0,0,0.3);
+    text-shadow: 2px 2px 6px rgba(0,0,0,0.4);
+    font-family: 'Pacifico', cursive;
   }
 
   p {
     font-size: 1.2em;
     max-width: 800px;
-    margin: 0 auto;
+    margin: 0 auto 25px;
     line-height: 1.6;
     padding: 0 15px 40px;
-    text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.4);
   }
 
   .cake {
     font-size: 6rem;
     margin: 20px 0 10px;
     animation: bounce 2s ease-in-out infinite alternate;
+    text-shadow: 3px 3px 6px rgba(0,0,0,0.4);
   }
 
   @keyframes bounce {
@@ -60,6 +74,32 @@
   @keyframes floatUp {
     0% { transform: translateY(0) rotate(0deg); opacity: 1; }
     100% { transform: translateY(-100vh) rotate(360deg); opacity: 0; }
+  }
+
+  button {
+    background: rgba(255, 255, 255, 0.2);
+    border: 2px solid #fff;
+    color: #fff;
+    padding: 10px 20px;
+    font-size: 1em;
+    border-radius: 30px;
+    cursor: pointer;
+    margin: 10px;
+    transition: 0.3s;
+    backdrop-filter: blur(5px);
+  }
+
+  button:hover {
+    background: rgba(255, 255, 255, 0.4);
+    transform: scale(1.1);
+  }
+
+  #extra {
+    display: none;
+    font-size: 1.3em;
+    font-style: italic;
+    margin-top: 15px;
+    color: #fffacd;
   }
 </style>
 </head>
@@ -82,9 +122,29 @@ Y quiero que sepas que aquí estaré siempre, a tu lado, acompañándote en cada
 Te amo con todo mi corazón 💖, y hoy, más que nunca, quiero recordarte lo increíblemente especial que eres para mí 🌹🎂✨.
 </p>
 
-<script>
-  const colors = ["🎈","🎉","🎊","🥳"];
+<!-- Botones -->
+<button onclick="toggleMusic()">🎵 Música</button>
+<button onclick="document.getElementById('extra').style.display='block'">💌 Ver más</button>
+<p id="extra">Siempre serás mi mayor regalo 🎁❤️</p>
 
+<!-- Música de fondo -->
+<audio id="music" loop>
+  <source src="tuCancion.mp3" type="audio/mpeg">
+</audio>
+
+<!-- Librería de confeti -->
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+<script>
+  // Música
+  const music = document.getElementById("music");
+  function toggleMusic() {
+    if (music.paused) { music.play(); }
+    else { music.pause(); }
+  }
+
+  // Globos
+  const colors = ["🎈","🎉","🎊","🥳"];
   function createBalloon() {
     const balloon = document.createElement("div");
     balloon.className = "balloon";
@@ -95,8 +155,16 @@ Te amo con todo mi corazón 💖, y hoy, más que nunca, quiero recordarte lo in
     document.body.appendChild(balloon);
     setTimeout(() => balloon.remove(), 10000);
   }
+  setInterval(createBalloon, 400);
 
-  setInterval(createBalloon, 300);
+  // Confeti al clic
+  document.addEventListener("click", () => {
+    confetti({
+      particleCount: 100,
+      spread: 70,
+      origin: { y: 0.6 }
+    });
+  });
 </script>
 
 </body>
