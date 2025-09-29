@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Video Sorpresa 💖</title>
+<style>
+body {
+    margin: 0;
+    padding: 0;
+    background: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    flex-direction: column;
+    color: white;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    text-align: center;
+}
+
+#reproducirBtn {
+    padding: 15px 30px;
+    font-size: 1.5em;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    background-color: #28a745;
+    color: white;
+    margin-top: 20px;
+    transition: background 0.3s;
+}
+
+#reproducirBtn:hover {
+    background-color: #218838;
+}
+
+video {
+    max-width: 90%;
+    height: auto;
+    display: none; /* se muestra al darle play */
+    border-radius: 15px;
+    box-shadow: 0 0 20px rgba(255,255,255,0.3);
+}
+</style>
+</head>
+<body>
+
+<h1>¡Una sorpresa te espera! 💖</h1>
+<video id="miVideo">
+  <source src="video.mp4" type="video/mp4">
+  Tu navegador no soporta videos HTML5.
+</video>
+<button id="reproducirBtn">Reproducir Video</button>
+
+<script>
+const video = document.getElementById("miVideo");
+const boton = document.getElementById("reproducirBtn");
+
+boton.addEventListener("click", () => {
+    video.style.display = "block";
+    video.play();
+    boton.style.display = "none";
+});
+
+// Cuando el video termina, esperar 3 segundos antes de pasar a la página 3
+video.addEventListener('ended', () => {
+  setTimeout(() => {
+    window.location.href = 'pagina3.html';
+  }, 3000);
+});
+</script>
+
+</body>
+</html>
+

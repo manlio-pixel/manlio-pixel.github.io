@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>¿Quieres casarte conmigo? 💍</title>
+<style>
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    overflow: hidden;
+    background: url('fondo_inicial.jpg') no-repeat center center/cover;
+    color: #fff;
+    text-shadow: 2px 2px 6px rgba(0,0,0,0.6);
+    position: relative;
+}
+
+#overlay {
+    position: absolute;
+    top:0; left:0;
+    width:100%;
+    height:100%;
+    background: url('fondo_propuesta.jpg') no-repeat center center/cover;
+    opacity: 0;
+    transition: opacity 2s ease-in-out;
+    z-index: 0;
+}
+
+h1 {
+    font-size: 2.5em;
+    margin: 10px 0;
+    color: #ffd700;
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: opacity 2s, transform 2s;
+    z-index: 1;
+}
+
+#mensaje {
+    font-size: 1.2em;
+    margin: 0 15px 20px 15px;
+    max-width: 700px;
+    line-height: 1.5;
+    text-align: center;
+    word-wrap: break-word;
+    opacity: 1; 
+    z-index: 1;
+    overflow: visible;
+    color: greenyellow; /* color dorado brillante */
+}
+
+
+.buttons {
+    margin-top: 10px;
+    position: relative;
+    width: 100%;
+    height: 150px;
+    opacity: 0;
+    z-index: 1;
+}
+
+button {
+    font-size: 1.4em;
+    padding: 10px 25px;
+    margin: 5px;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: all 0.3s;
+    position: absolute;
+}
+
+.yes {
+    background-color: #28a745;
+    color: white;
+    left: 50%;
+    transform: translateX(-50%);
+    animation: float 2s ease-in-out infinite alternate;
+}
+
+.no {
+    background-color: #dc3545;
+    color: white;
+    left: 60%;
+}
+
+@keyframes float {
+    0% { transform: translateX(-50%) translateY(0); }
+    100% { transform: translateX(-50%) translateY(-8px); }
+}
+</style>
+</head>
+<body>
+
+<div id="overlay"></div>
+
+<h1 id="titulo">¿Quieres casarte conmigo? 💖</h1>
+<p id="mensaje"></p>
+
+<div class="buttons" id="botones">
+  <button class="yes" onclick="window.location.href='agradecimiento.html'">Sí 💖</button>
+  <button class="no">No 😢</button>
+</div>
+
+<audio id="musica" src="musica_fondo.mp3" loop autoplay></audio>
+
+<script>
+const titulo = document.getElementById("titulo");
+const mensaje = document.getElementById("mensaje");
+const botones = document.getElementById("botones");
+const noBtn = document.querySelector(".no");
+const overlay = document.getElementById("overlay");
+let moving = false;
+
+const texto = `Desde que llegaste a mi vida, cada día se ha llenado de luz, alegría y momentos que jamás imaginé que podría vivir.<br>
+Tu risa, tu mirada y tu corazón hacen que todo a mi alrededor se vuelva más hermoso y especial.<br>
+No hay nada que desee más que construir nuestro futuro juntos, caminar de la mano en cada aventura, apoyarnos en los días difíciles y celebrar cada logro y sueño que compartamos.<br>
+Hoy quiero dar un paso más y preguntarte esto.`;
+
+// Tipo máquina de escribir
+function typeWriter(text, element, duration) {
+  let i = 0;
+  const cleanText = text.replace(/<br>/g, "\n");
+  const interval = duration / cleanText.length;
+  element.style.opacity = 1;
+  const timer = setInterval(() => {
+    if (cleanText.charAt(i) === "\n") {
+      element.innerHTML += "<br>";
+    } else {
+      element.innerHTML += cleanText.charAt(i);
+    }
+    i++;
+    if (i >= cleanText.length) {
+      clearInterval(timer);
+      showTitleAndButtons();
+    }
+  }, interval);
+}
+
+// Mostrar título, botones y cambiar fondo
+function showTitleAndButtons() {
+  overlay.style.opacity = 1;
+  titulo.style.opacity = 1;
+  titulo.style.transform = "translateY(0)";
+  botones.style.opacity = 1;
+
+  // Botón No animación
+  noBtn.addEventListener("click", () => {
+    if (!moving) {
+      moving = true;
+      setInterval(() => {
+        const x = Math.random() * (window.innerWidth - noBtn.offsetWidth);
+        const y = Math.random() * (window.innerHeight - noBtn.offsetHeight);
+        noBtn.style.left = x + "px";
+        noBtn.style.top = y + "px";
+        noBtn.style.position = "fixed";
+      }, 800);
+    }
+  });
+}
+
+// Iniciar escritura al cargar la página
+window.addEventListener("load", () => {
+  typeWriter(texto, mensaje, 20000);
+});
+</script>
+</body>
+</html>
