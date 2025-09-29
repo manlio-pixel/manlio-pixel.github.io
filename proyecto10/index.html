@@ -4,37 +4,49 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Feliz Navidad 🎄</title>
+
+<!-- Tipografías navideñas -->
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
+
 <style>
   body {
     margin: 0;
     padding: 20px;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Quicksand', sans-serif;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
-    background: linear-gradient(to top, #4a90e2, #a0d8f1);
+    background: linear-gradient(-45deg, #1e3c72, #2a5298, #6dd5ed, #2193b0);
+    background-size: 400% 400%;
+    animation: gradientMove 15s ease infinite;
     overflow-x: hidden;
     color: #fff;
     box-sizing: border-box;
   }
 
+  @keyframes gradientMove {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+
   h1 {
-    font-size: 2.5em;
+    font-size: 2.8em;
     color: #fffacd;
-    text-shadow: 2px 2px 5px rgba(0,0,0,0.3);
+    text-shadow: 0 0 15px rgba(255,255,200,0.8), 2px 2px 6px rgba(0,0,0,0.4);
     margin: 20px 0;
+    font-family: 'Pacifico', cursive;
   }
 
   p {
     font-size: 1.2em;
-    color: #fff;
     max-width: 800px;
     margin: 0 auto;
     line-height: 1.6;
     padding: 0 15px 40px;
-    text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.4);
   }
 
   /* Muñeco de nieve */
@@ -43,6 +55,7 @@
     animation: bounce 2s ease-in-out infinite alternate;
     margin-top: 20px;
     margin-bottom: 10px;
+    text-shadow: 0 0 20px rgba(255,255,255,0.8);
   }
 
   @keyframes bounce {
@@ -50,7 +63,7 @@
     100% { transform: translateY(-30px); }
   }
 
-  /* Copos de nieve */
+  /* Copos de nieve animados */
   .flake {
     position: absolute;
     color: white;
@@ -65,6 +78,32 @@
     0% { transform: translateY(0) rotate(0deg); opacity: 1; }
     100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
   }
+
+  button {
+    background: rgba(255, 255, 255, 0.2);
+    border: 2px solid #fff;
+    color: #fff;
+    padding: 10px 20px;
+    font-size: 1em;
+    border-radius: 30px;
+    cursor: pointer;
+    margin: 10px;
+    transition: 0.3s;
+    backdrop-filter: blur(5px);
+  }
+
+  button:hover {
+    background: rgba(255, 255, 255, 0.4);
+    transform: scale(1.1);
+  }
+
+  #extra {
+    display: none;
+    font-size: 1.3em;
+    font-style: italic;
+    margin-top: 15px;
+    color: #fffacd;
+  }
 </style>
 </head>
 <body>
@@ -72,32 +111,47 @@
   <div class="snowman">⛄</div>
   <h1>¡Feliz Navidad, mi amor! 🎄</h1>
   <p>
-Amor mío 💖, deseo que esta Navidad 🎅🎁 esté llena de risas contagiosas 😂, abrazos calentitos 🤗 y momentos mágicos ✨ a tu lado.
-No hay mejor regalo 🎁 que poder compartir estas fechas contigo, porque eres la razón por la que mi corazón late tan fuerte ❤️ y por la que cada día tiene un brillo especial 🌟.
+Amor mío 💖, deseo que esta Navidad 🎅🎁 esté llena de risas contagiosas 😂, abrazos calentitos 🤗 y momentos mágicos ✨ a tu lado.  
+No hay mejor regalo 🎁 que poder compartir estas fechas contigo, porque eres la razón por la que mi corazón late tan fuerte ❤️ y por la que cada día tiene un brillo especial 🌟.  
 
-Gracias por hacer que mi mundo sea más luminoso 🌈, más alegre 😍 y más feliz cada día que pasa.
-Contigo he aprendido que el verdadero espíritu de la Navidad 🎄 no está en los adornos, ni en las luces, sino en el amor que se comparte ❤️🔥.
+Gracias por hacer que mi mundo sea más luminoso 🌈, más alegre 😍 y más feliz cada día que pasa.  
+Contigo he aprendido que el verdadero espíritu de la Navidad 🎄 no está en los adornos, ni en las luces, sino en el amor que se comparte ❤️🔥.  
 
-Hoy le pido al universo 🌌 que esta sea solo una de muchas Navidades juntos 🕊️, y que el calor de nuestro amor siga iluminando cada invierno ❄️ con la promesa de un futuro lleno de sueños cumplidos 🌠.
+Hoy le pido al universo 🌌 que esta sea solo una de muchas Navidades juntos 🕊️, y que el calor de nuestro amor siga iluminando cada invierno ❄️ con la promesa de un futuro lleno de sueños cumplidos 🌠.  
 
 Te amo con todo mi corazón 💕, y en esta Navidad quiero recordarte que tú eres y siempre serás mi mayor alegría 🎁💘.
   </p>
 
-  <script>
-    // Crear copos de nieve aleatorios
-    function createFlake() {
-      const flake = document.createElement("div");
-      flake.className = "flake";
-      flake.textContent = "❄";
-      flake.style.left = Math.random() * window.innerWidth + "px";
-      flake.style.fontSize = (10 + Math.random() * 20) + "px";
-      flake.style.animationDuration = (5 + Math.random() * 5) + "s";
-      document.body.appendChild(flake);
-      setTimeout(() => flake.remove(), 10000);
-    }
+  <!-- Botón sorpresa -->
+  <button onclick="document.getElementById('extra').style.display='block'">💌 Sorpresa</button>
+  <p id="extra">Tú eres mi regalo más hermoso esta Navidad 🎁❤️</p>
 
-    setInterval(createFlake, 200);
-  </script>
+  <!-- Música navideña (autoplay) -->
+  <audio id="music" autoplay loop>
+    <source src="navidad.mp3" type="audio/mpeg">
+  </audio>
+
+<script>
+  // Copos de nieve automáticos
+  function createFlake() {
+    const flake = document.createElement("div");
+    flake.className = "flake";
+    flake.textContent = "❄";
+    flake.style.left = Math.random() * window.innerWidth + "px";
+    flake.style.fontSize = (10 + Math.random() * 20) + "px";
+    flake.style.animationDuration = (5 + Math.random() * 5) + "s";
+    document.body.appendChild(flake);
+    setTimeout(() => flake.remove(), 10000);
+  }
+  setInterval(createFlake, 200);
+
+  // Copos de nieve al hacer clic
+  document.addEventListener("click", () => {
+    for (let i = 0; i < 15; i++) {
+      createFlake();
+    }
+  });
+</script>
 
 </body>
 </html>
