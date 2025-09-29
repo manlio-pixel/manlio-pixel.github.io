@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sorpresa Especial 💖</title>
+<style>
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background: linear-gradient(135deg, #fffaf0, #fdf5e6, #f8e1e7);
+    color: #5a3e36;
+    animation: fadeIn 2.5s ease-in-out;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  h1 {
+    font-size: 2.5em;
+    margin-bottom: 40px;
+    color: #b8860b; /* Dorado elegante */
+    text-shadow: 1px 1px 4px rgba(0,0,0,0.2);
+    animation: floatText 3s ease-in-out infinite alternate;
+  }
+
+  @keyframes floatText {
+    from { transform: translateY(0); }
+    to { transform: translateY(-10px); }
+  }
+
+  .btn {
+    font-size: 1.3em;
+    padding: 12px 40px;
+    background: linear-gradient(135deg, #b8860b, #ffd700);
+    color: white;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+
+  .btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+  }
+</style>
+</head>
+<body>
+
+<h1>✨ Una sorpresa te espera más adelante ✨</h1>
+<button class="btn" onclick="window.location.href='pagina2.html'">Presiona aqui...</button>
+
+</body>
+</html>
