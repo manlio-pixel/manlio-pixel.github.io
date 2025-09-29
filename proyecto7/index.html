@@ -1,100 +1,171 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Un Año de Noviazgo 💖</title>
-  <style>
-    body {
-      margin: 0;
-      padding: 20px;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: linear-gradient(135deg, #ff9a9e, #fad0c4);
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-      overflow-x: hidden;
-      box-sizing: border-box;
-    }
-    h1 {
-      font-size: 2.8em;
-      color: #fff;
-      margin-bottom: 20px;
-      text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
-    }
-    p {
-      font-size: 1.3em;
-      color: #fff;
-      max-width: 800px;
-      margin: 0 auto;
-      line-height: 1.6;
-      padding: 0 15px 40px;
-      text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
-    }
-    .heart {
-      position: absolute;
-      width: 20px;
-      height: 20px;
-      background: red;
-      transform: rotate(45deg);
-      animation: float 6s infinite ease-in;
-    }
-    .heart::before,
-    .heart::after {
-      content: '';
-      position: absolute;
-      width: 20px;
-      height: 20px;
-      background: red;
-      border-radius: 50%;
-    }
-    .heart::before {
-      top: -10px;
-      left: 0;
-    }
-    .heart::after {
-      left: -10px;
-      top: 0;
-    }
-    @keyframes float {
-      0% {
-        transform: translateY(0) rotate(45deg);
-        opacity: 1;
-      }
-      100% {
-        transform: translateY(-800px) rotate(45deg);
-        opacity: 0;
-      }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Un Año de Noviazgo 💖</title>
+
+<!-- Fuentes bonitas -->
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
+
+<style>
+  body {
+    margin: 0;
+    padding: 20px;
+    font-family: 'Quicksand', sans-serif;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    overflow: hidden;
+    box-sizing: border-box;
+    background: linear-gradient(-45deg, #ff9a9e, #fad0c4, #ffdde1, #fbc2eb);
+    background-size: 400% 400%;
+    animation: gradientMove 15s ease infinite;
+    color: #fff;
+  }
+
+  @keyframes gradientMove {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+
+  h1 {
+    font-family: 'Pacifico', cursive;
+    font-size: 3em;
+    color: #fffacd;
+    margin-bottom: 20px;
+    text-shadow: 0 0 15px rgba(0,0,0,0.3);
+    animation: fadeIn 2s ease-in;
+  }
+
+  p {
+    font-size: 1.3em;
+    max-width: 800px;
+    margin: 0 auto;
+    line-height: 1.6;
+    padding: 0 15px 40px;
+    text-shadow: 1px 1px 4px rgba(0,0,0,0.3);
+    animation: fadeIn 3s ease-in;
+  }
+
+  @keyframes fadeIn {
+    from {opacity: 0; transform: translateY(20px);}
+    to {opacity: 1; transform: translateY(0);}
+  }
+
+  /* Corazones flotantes */
+  .heart {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: red;
+    transform: rotate(45deg);
+    animation: float 6s infinite ease-in;
+  }
+
+  .heart::before,
+  .heart::after {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: red;
+    border-radius: 50%;
+  }
+  .heart::before { top: -10px; left: 0; }
+  .heart::after { left: -10px; top: 0; }
+
+  @keyframes float {
+    0% { transform: translateY(0) rotate(0deg) scale(0.8); opacity: 1; }
+    50% { transform: translateY(-400px) rotate(180deg) scale(1.2); opacity: 0.8; }
+    100% { transform: translateY(-800px) rotate(360deg) scale(1); opacity: 0; }
+  }
+
+  /* Botón sorpresa */
+  #sorpresa {
+    display: none;
+    margin-top: 20px;
+    padding: 10px 25px;
+    font-size: 1em;
+    border-radius: 25px;
+    border: 2px solid #fff;
+    background: rgba(255,255,255,0.2);
+    color: #fff;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+  #sorpresa:hover {
+    background: rgba(255,255,255,0.4);
+    transform: scale(1.1);
+  }
+
+  #mensaje {
+    display: none;
+    margin-top: 15px;
+    font-size: 1.3em;
+    color: #fffacd;
+    font-style: italic;
+  }
+</style>
 </head>
 <body>
-  <h1>💖 ¡Feliz Primer Año Juntos! 💖</h1>
-  <p>
-Amor mío 💖, hoy celebramos 365 días de amor 🌹, sonrisas 😍, abrazos 🤗 y momentos que se han quedado grabados en mi corazón 💞.
-Este primer año contigo ha sido una de las etapas más hermosas de mi vida ✨, porque a tu lado he descubierto lo que significa realmente amar 💘, compartir 🌎 y soñar juntos 🌙.
 
-Gracias por ser mi compañera 🤍, mi apoyo incondicional 🙌 y mi felicidad diaria 🌈.
-Gracias por cada palabra de aliento 💬, por cada risa inesperada 😂 y por cada instante en el que me has hecho sentir la persona más afortunada del mundo 🌟.
-
-Un año 🎉 parece poco comparado con todo lo que quiero vivir contigo 🔒❤️. Esto apenas es el comienzo de una historia 📖 que deseo escribir a tu lado ✍️, paso a paso 👣, día tras día ☀️🌙, con la certeza de que nuestro amor solo seguirá creciendo 🌱💞.
-
+<h1>💖 ¡Feliz Primer Año Juntos! 💖</h1>
+<p>
+Amor mío 💖, hoy celebramos 365 días de amor 🌹, sonrisas 😍, abrazos 🤗 y momentos que se han quedado grabados en mi corazón 💞.<br>
+Este primer año contigo ha sido una de las etapas más hermosas de mi vida ✨, porque a tu lado he descubierto lo que significa realmente amar 💘, compartir 🌎 y soñar juntos 🌙.<br><br>
+Gracias por ser mi compañera 🤍, mi apoyo incondicional 🙌 y mi felicidad diaria 🌈.<br>
+Gracias por cada palabra de aliento 💬, por cada risa inesperada 😂 y por cada instante en el que me has hecho sentir la persona más afortunada del mundo 🌟.<br><br>
+Un año 🎉 parece poco comparado con todo lo que quiero vivir contigo 🔒❤️. Esto apenas es el comienzo de una historia 📖 que deseo escribir a tu lado ✍️, paso a paso 👣, día tras día ☀️🌙, con la certeza de que nuestro amor solo seguirá creciendo 🌱💞.<br><br>
 Te amo con todo lo que soy 💕 y con todo lo que seré ✨, y quiero que este sea el primero de muchos aniversarios 🥂 que celebremos juntos, siempre de la mano 🤝, siempre con el corazón lleno de amor 💓.
-  </p>
+</p>
 
-  <!-- corazones animados -->
-  <script>
-    function createHeart() {
-      const heart = document.createElement("div");
-      heart.className = "heart";
-      heart.style.left = Math.random() * 100 + "vw";
-      heart.style.animationDuration = (3 + Math.random() * 5) + "s";
-      document.body.appendChild(heart);
-      setTimeout(() => heart.remove(), 8000);
-    }
-    setInterval(createHeart, 300);
-  </script>
+<!-- Botón sorpresa -->
+<button id="sorpresa">💌 Ver mensaje secreto</button>
+<p id="mensaje">Te amo más de lo que las palabras pueden decir 💖✨</p>
+
+<!-- Música -->
+<audio id="music" loop>
+  <source src="mi_cancion.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+  // Música con clic
+  const music = document.getElementById("music");
+  document.addEventListener("click", () => {
+    if(music.paused) music.play();
+  });
+
+  // Corazones flotantes
+  let heartsCount = 0;
+  function createHeart() {
+    if(heartsCount > 30) return;
+    const heart = document.createElement("div");
+    heart.className = "heart";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.animationDuration = (3 + Math.random()*5) + "s";
+    document.body.appendChild(heart);
+    heartsCount++;
+    setTimeout(() => {
+      heart.remove();
+      heartsCount--;
+    }, 8000);
+  }
+  setInterval(createHeart, 400);
+
+  // Botón sorpresa
+  setTimeout(() => {
+    const btn = document.getElementById("sorpresa");
+    btn.style.display = "inline-block";
+    btn.onclick = () => {
+      document.getElementById("mensaje").style.display = "block";
+      btn.disabled = true;
+    };
+  }, 5000);
+</script>
+
 </body>
 </html>
