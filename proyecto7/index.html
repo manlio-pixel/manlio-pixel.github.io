@@ -18,7 +18,7 @@
     flex-direction: column;
     align-items: center;
     text-align: center;
-    overflow: hidden;
+    overflow-x: hidden; /* evitar scroll lateral en móvil */
     box-sizing: border-box;
     background: linear-gradient(-45deg, #ff9a9e, #fad0c4, #ffdde1, #fbc2eb);
     background-size: 400% 400%;
@@ -34,19 +34,19 @@
 
   h1 {
     font-family: 'Pacifico', cursive;
-    font-size: 3em;
+    font-size: 2.8em;
     color: #fffacd;
-    margin-bottom: 20px;
+    margin: 0 10px 20px 10px;
     text-shadow: 0 0 15px rgba(0,0,0,0.3);
     animation: fadeIn 2s ease-in;
   }
 
   p {
-    font-size: 1.3em;
-    max-width: 800px;
-    margin: 0 auto;
+    font-size: 1.2em;
+    max-width: 90%; /* antes 800px */
+    margin: 0 auto 20px;
     line-height: 1.6;
-    padding: 0 15px 40px;
+    padding: 0 10px 20px;
     text-shadow: 1px 1px 4px rgba(0,0,0,0.3);
     animation: fadeIn 3s ease-in;
   }
@@ -105,9 +105,27 @@
   #mensaje {
     display: none;
     margin-top: 15px;
-    font-size: 1.3em;
+    font-size: 1.2em;
     color: #fffacd;
     font-style: italic;
+    padding: 0 10px;
+  }
+
+  /* Ajustes para pantallas pequeñas */
+  @media (max-width: 600px) {
+    h1 {
+      font-size: 2em;
+    }
+    p {
+      font-size: 1em;
+    }
+    #sorpresa {
+      font-size: 0.9em;
+      padding: 8px 18px;
+    }
+    #mensaje {
+      font-size: 1em;
+    }
   }
 </style>
 </head>
