@@ -103,6 +103,20 @@
     font-style: italic;
     margin-top: 15px;
     color: #fffacd;
+    opacity: 0;
+    transition: opacity 1s ease;
+  }
+
+  #extra.show {
+    display: block;
+    opacity: 1;
+  }
+
+  /* Ajustes para móviles */
+  @media (max-width: 600px) {
+    h1 { font-size: 2em; }
+    p { font-size: 1em; }
+    .snowman { font-size: 4rem; }
   }
 </style>
 </head>
@@ -121,26 +135,10 @@ Hoy le pido al universo 🌌 que esta sea solo una de muchas Navidades juntos �
 
 Te amo con todo mi corazón 💕, y en esta Navidad quiero recordarte que tú eres y siempre serás mi mayor alegría 🎁💘.
   </p>
+
 <!-- Botón sorpresa -->
 <button id="surpriseBtn" onclick="showMessage()">💌 Sorpresa</button>
 <p id="extra">Tú eres mi regalo más hermoso esta Navidad 🎁❤️</p>
-
-<style>
-  #extra {
-    display: none;
-    font-size: 1.3em;
-    font-style: italic;
-    margin-top: 15px;
-    color: #fffacd;
-    opacity: 0;
-    transition: opacity 1s ease;
-  }
-
-  #extra.show {
-    display: block;
-    opacity: 1;
-  }
-</style>
 
 <script>
   function showMessage() {
@@ -148,17 +146,9 @@ Te amo con todo mi corazón 💕, y en esta Navidad quiero recordarte que tú er
     const btn = document.getElementById("surpriseBtn");
     msg.classList.add("show");
     btn.textContent = "💖 Ya viste tu sorpresa";
-    btn.disabled = true; // opcional: desactiva el botón después
+    btn.disabled = true;
   }
-</script>
 
-
-  <!-- Música navideña (autoplay) -->
-  <audio id="music" autoplay loop>
-    <source src="navidad.mp3" type="audio/mpeg">
-  </audio>
-
-<script>
   // Copos de nieve automáticos
   function createFlake() {
     const flake = document.createElement("div");
@@ -180,7 +170,10 @@ Te amo con todo mi corazón 💕, y en esta Navidad quiero recordarte que tú er
   });
 </script>
 
+  <!-- Música navideña (autoplay) -->
+  <audio id="music" autoplay loop>
+    <source src="navidad.mp3" type="audio/mpeg">
+  </audio>
+
 </body>
 </html>
-
-
