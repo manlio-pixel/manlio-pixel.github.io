@@ -7,9 +7,9 @@
 <style>
 body {
     margin: 0;
-    padding: 0;
+    padding: 15px; /* margen interno para móviles */
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    height: 100vh;
+    min-height: 100vh; /* antes height fijo */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -19,26 +19,32 @@ body {
     color: #fff;
     text-shadow: 2px 2px 6px rgba(0,0,0,0.6);
     flex-direction: column;
+    box-sizing: border-box;
 }
 
 h1 {
-    font-size: 3em;
-    margin: 0 20px 20px 20px;
+    font-size: 2.5em;
+    margin: 15px 10px 20px 10px;
     color: #ffd700;
     text-shadow: 2px 2px 8px rgba(0,0,0,0.7);
 }
 
 p {
-    font-size: 1.5em;
-    max-width: 700px;
-    margin: 0 20px;
+    font-size: 1.3em;
+    max-width: 90%; /* antes 700px */
+    margin: 0 auto;
     line-height: 1.6;
     color: black;
 }
 
+/* Ajustes para pantallas pequeñas */
 @media (max-width: 600px) {
-    h1 { font-size: 2em; }
-    p { font-size: 1.2em; }
+    h1 {
+        font-size: 1.8em;
+    }
+    p {
+        font-size: 1.1em;
+    }
 }
 </style>
 </head>
