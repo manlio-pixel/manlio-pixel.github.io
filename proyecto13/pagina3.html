@@ -9,7 +9,7 @@ body {
     margin: 0;
     padding: 0;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    height: 100vh;
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -20,6 +20,8 @@ body {
     color: #fff;
     text-shadow: 2px 2px 6px rgba(0,0,0,0.6);
     position: relative;
+    padding: 15px;
+    box-sizing: border-box;
 }
 
 #overlay {
@@ -34,8 +36,8 @@ body {
 }
 
 h1 {
-    font-size: 2.5em;
-    margin: 10px 0;
+    font-size: 2.2em;
+    margin: 15px 0;
     color: #ffd700;
     opacity: 0;
     transform: translateY(-10px);
@@ -44,56 +46,70 @@ h1 {
 }
 
 #mensaje {
-    font-size: 1.2em;
-    margin: 0 15px 20px 15px;
-    max-width: 700px;
+    font-size: 1.1em;
+    margin: 0 10px 20px 10px;
+    max-width: 90%;
     line-height: 1.5;
     text-align: center;
     word-wrap: break-word;
     opacity: 1; 
     z-index: 1;
-    overflow: visible;
-    color: greenyellow; /* color dorado brillante */
+    color: greenyellow;
 }
 
-
 .buttons {
-    margin-top: 10px;
+    margin-top: 15px;
     position: relative;
     width: 100%;
-    height: 150px;
+    height: auto;
     opacity: 0;
     z-index: 1;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 15px;
 }
 
 button {
-    font-size: 1.4em;
-    padding: 10px 25px;
-    margin: 5px;
+    font-size: 1.2em;
+    padding: 10px 20px;
     border: none;
-    border-radius: 15px;
+    border-radius: 12px;
     cursor: pointer;
     transition: all 0.3s;
-    position: absolute;
+    min-width: 110px;
 }
 
 .yes {
     background-color: #28a745;
     color: white;
-    left: 50%;
-    transform: translateX(-50%);
     animation: float 2s ease-in-out infinite alternate;
 }
 
 .no {
     background-color: #dc3545;
     color: white;
-    left: 60%;
+    position: relative;
 }
 
 @keyframes float {
-    0% { transform: translateX(-50%) translateY(0); }
-    100% { transform: translateX(-50%) translateY(-8px); }
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-8px); }
+}
+
+/* Ajustes para pantallas pequeñas */
+@media (max-width: 600px) {
+    h1 {
+        font-size: 1.6em;
+    }
+    #mensaje {
+        font-size: 1em;
+    }
+    button {
+        font-size: 1em;
+        padding: 8px 16px;
+        min-width: 90px;
+    }
 }
 </style>
 </head>
@@ -124,7 +140,7 @@ Tu risa, tu mirada y tu corazón hacen que todo a mi alrededor se vuelva más he
 No hay nada que desee más que construir nuestro futuro juntos, caminar de la mano en cada aventura, apoyarnos en los días difíciles y celebrar cada logro y sueño que compartamos.<br>
 Hoy quiero dar un paso más y preguntarte esto.`;
 
-// Tipo máquina de escribir
+// Efecto máquina de escribir
 function typeWriter(text, element, duration) {
   let i = 0;
   const cleanText = text.replace(/<br>/g, "\n");
@@ -151,16 +167,16 @@ function showTitleAndButtons() {
   titulo.style.transform = "translateY(0)";
   botones.style.opacity = 1;
 
-  // Botón No animación
+  // Botón No animación (se escapa en móviles también)
   noBtn.addEventListener("click", () => {
     if (!moving) {
       moving = true;
       setInterval(() => {
-        const x = Math.random() * (window.innerWidth - noBtn.offsetWidth);
-        const y = Math.random() * (window.innerHeight - noBtn.offsetHeight);
+        const x = Math.random() * (window.innerWidth - noBtn.offsetWidth - 20);
+        const y = Math.random() * (window.innerHeight - noBtn.offsetHeight - 20);
+        noBtn.style.position = "fixed";
         noBtn.style.left = x + "px";
         noBtn.style.top = y + "px";
-        noBtn.style.position = "fixed";
       }, 800);
     }
   });
