@@ -33,29 +33,72 @@
     @keyframes blink {
       50% { border-color: transparent }
     }
-    /* Botones */
-.contacto {
-  display: flex;
-  gap: 10px;
+
+    .typing {
+  font-family: 'Segoe UI', sans-serif;
+  font-size: 20px;
+  text-align: center;
+  margin-top: 50px;
+  color: #444;
 }
 
-.btn {
-  text-decoration: none;
-  padding: 10px 16px;           /* ⬆️ Más grandes */
-  border-radius: 10px;
-  font-weight: bold;
-  font-size: 1.05rem;
-  transition: 0.3s;
-}
-    .whatsapp {
-  background: #25d366;
+/* Botón */
+.btn-whatsapp {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 12px 28px;
+  font-size: 18px;
   color: white;
+  text-decoration: none;
+  border-radius: 30px;
+  background: linear-gradient(45deg, #ff6ec4, #7873f5);
+  box-shadow: 0 5px 15px rgba(255, 110, 196, 0.4);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
 }
+
+/* Efecto hover */
+.btn-whatsapp:hover {
+  transform: scale(1.08);
+  box-shadow: 0 8px 25px rgba(120, 115, 245, 0.6);
+}
+
+/* Brillo animado */
+.btn-whatsapp::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -75%;
+  width: 50%;
+  height: 100%;
+  background: rgba(255,255,255,0.4);
+  transform: skewX(-25deg);
+  transition: 0.5s;
+}
+
+.btn-whatsapp:hover::before {
+  left: 125%;
+}
+
+/* Animación flotante */
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-6px); }
+  100% { transform: translateY(0px); }
+}
+
+.btn-whatsapp {
+  animation: float 2.5s ease-in-out infinite;
+}
+
   </style>
 </head>
 <body>
-  <div class="contacto">
-<a href="https://wa.me/50254379457" target="_blank" class="btn whatsapp">💬 WhatsApp</a>
-    </div>
+<div class="typing">
+  <a href="https://wa.me/50254379457" target="_blank" class="btn-contacto">
+    🎀 Presiona aquí 💖
+  </a>
+</div>
 </body>
 </html>
