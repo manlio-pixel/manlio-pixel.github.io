@@ -33,9 +33,29 @@
     @keyframes blink {
       50% { border-color: transparent }
     }
+    /* Botones */
+.contacto {
+  display: flex;
+  gap: 10px;
+}
+
+.btn {
+  text-decoration: none;
+  padding: 10px 16px;           /* ⬆️ Más grandes */
+  border-radius: 10px;
+  font-weight: bold;
+  font-size: 1.05rem;
+  transition: 0.3s;
+}
+    .whatsapp {
+  background: #25d366;
+  color: white;
+}
   </style>
 </head>
 <body>
+  <div class="contacto">
 <a href="https://wa.me/50254379457" target="_blank" class="btn whatsapp">💬 WhatsApp</a>
+    </div>
 </body>
 </html>
